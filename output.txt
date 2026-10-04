@@ -1,0 +1,9 @@
+Decision path:
+  J1 (d=2, p=100) -> ACCEPTED in slot 2
+  J3 (d=2, p=27) -> ACCEPTED in slot 1
+  J4 (d=1, p=25) -> REJECTED (no free slot)
+  J2 (d=1, p=19) -> REJECTED (no free slot)
+  J5 (d=3, p=15) -> ACCEPTED in slot 3
+
+Final schedule: J3 J1 J5 
+Total profit = 142
