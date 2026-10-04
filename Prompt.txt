@@ -1,0 +1,3 @@
+Prompt used (AI tool: Claude):
+
+"Illustrate bounding and pruning in 0/1 Knapsack using node values. Use items (w,v) = (4,40), (7,42), (5,25), (3,12) with capacity W=10. Draw the state-space tree with weight, value and upper bound at each node. Left child = take item, right child = skip item. Mark pruned nodes in red, infeasible nodes (w > W) in gray dashed, and the best solution in green."
