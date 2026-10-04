@@ -1,0 +1,1 @@
+Visualize the state space tree for N=4 queens, marking invalid branches in red.
