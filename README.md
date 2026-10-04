@@ -1,45 +1,62 @@
-# Greedy Job Sequencing with Deadlines
+# Sorting Complexity Visualizer (Merge Sort vs Quick Sort)
 
 ## Description
-This project implements Job Sequencing with Deadlines using the greedy method and
-visualizes job selection as a flowchart plus a step-by-step decision path. Each job
-takes one unit of time and earns its profit only if it is finished on or before its
-deadline. The goal is to maximize total profit.
+This project implements **Merge Sort** and **Quick Sort** in Python and compares their time complexity for input sizes **n = 10, 100, 1000**. It counts the comparisons each algorithm performs on random data and visualizes the growth rates as a line chart through prompt engineering.
 
 ## Algorithm
+
+**Merge Sort** (Divide and Conquer, O(n log n) in all cases)
 ```
-JobSequencing(jobs[1..n]):
-    sort jobs in descending order of profit
-    maxD = maximum deadline;  slot[1..maxD] = empty;  totalProfit = 0
-    for each job J in sorted order:
-        t = min(J.deadline, maxD)
-        while t >= 1 and slot[t] is occupied:
-            t = t - 1
-        if t >= 1:
-            slot[t] = J;  totalProfit += J.profit      // ACCEPT
-        else:
-            reject J                                   // REJECT
-    return slot[], totalProfit
+MERGE-SORT(A):
+    if length(A) <= 1: return A
+    mid = length(A) / 2
+    L = MERGE-SORT(A[0..mid])
+    R = MERGE-SORT(A[mid..end])
+    return MERGE(L, R)
+
+MERGE(L, R):
+    result = []
+    while L and R are not empty:
+        append the smaller front element of L or R to result
+    append remaining elements of L or R
+    return result
 ```
-Time complexity: O(n log n) for sorting + O(n * maxD) for slot search (O(n^2) worst case).
+
+**Quick Sort** (Divide and Conquer, O(n log n) average, O(n²) worst case)
+```
+QUICK-SORT(A):
+    if length(A) <= 1: return A
+    pivot = random element of A
+    less    = elements < pivot
+    equal   = elements == pivot
+    greater = elements > pivot
+    return QUICK-SORT(less) + equal + QUICK-SORT(greater)
+```
+
+**Visualization logic:** For each n, both algorithms sort 20 random arrays and the average number of comparisons is recorded. These are plotted against the theoretical n log₂ n curve and the Quick Sort worst case n(n-1)/2, on log-log axes.
 
 ## Prompt Used
-"Create a flow diagram showing job selection based on deadlines and profits."
+“Generate a graph comparing time complexity of Merge, and Quick Sort for n = 10, 100, 1000.”
 
 ## Output
-Sample input: J1(d=2, p=100), J2(d=1, p=19), J3(d=2, p=27), J4(d=1, p=25), J5(d=3, p=15)
+![Sorting Complexity Visualization](Visualization.png)
 
-Result: schedule **J3 -> J1 -> J5**, total profit **142** (J4 and J2 rejected because slot 1 is taken).
+| n    | Merge Sort comparisons | Quick Sort comparisons | n log₂ n |
+|------|-----------------------:|-----------------------:|---------:|
+| 10   | 23                     | 30                     | 33       |
+| 100  | 541                    | 719                    | 664      |
+| 1000 | 8711                   | 11570                  | 9966     |
 
-![Visualization](Visualization.png)
+Both algorithms track the n log n curve closely, while the Quick Sort worst case (O(n²)) grows far faster.
 
-Left: flowchart of the algorithm (diamonds = decisions). Right: decision path for the
-sample run, with accepted jobs in green, rejected jobs in red, and the slots filling up.
-
-Run: `g++ -o job Project4_JobSequencing.cpp && ./job` - prints the decision path shown in `Visualization.png`.
+## How to Run
+```bash
+pip install matplotlib
+python Project1_SortingComplexity.py
+```
 
 ## Learning Outcome
-- Understood the greedy strategy for job sequencing with deadlines.
-- Learned to trace accept/reject decision paths through an algorithm.
-- Learned prompt-based visualization.
+- Understood divide-and-conquer sorting and its time complexity.
+- Compared average-case and worst-case behavior of Merge Sort and Quick Sort.
+- Learned prompt-based visualization of algorithm growth rates.
 - Practiced GitHub documentation.

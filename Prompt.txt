@@ -1,1 +1,42 @@
-"Create a flow diagram showing job selection based on deadlines and profits."
+PROMPT USED FOR AI-GENERATED VISUALIZATION
+==========================================
+Project : Sorting Complexity Visualizer
+Unit    : Unit 1 - Algorithm Analysis
+
+Short Prompt
+------------
+"Generate a graph comparing time complexity of Merge, and Quick Sort for n = 10, 100, 1000."
+
+Detailed Prompt
+---------------
+You are a Python data-visualization assistant. Write a complete Python program
+using matplotlib that compares the time complexity of Merge Sort and Quick Sort.
+
+Requirements:
+1. Implement both algorithms from scratch (do not use built-in sort for the
+   algorithms themselves):
+   - Merge Sort: recursive divide-and-conquer with a merge step.
+   - Quick Sort: recursive, with a randomly chosen pivot.
+2. Add a comparison counter to each algorithm so the number of comparisons is
+   measured instead of guessed.
+3. Test both algorithms on random integer arrays of size n = 10, 100 and 1000.
+   Average the results over 20 trials per size, and verify that each output is
+   correctly sorted.
+4. Plot a single line chart with:
+   - X-axis: input size n (10, 100, 1000), log scale.
+   - Y-axis: number of comparisons, log scale.
+   - Line 1: Merge Sort (measured comparisons), blue, circle markers.
+   - Line 2: Quick Sort average case (measured comparisons), green, square markers.
+   - Line 3: theoretical n log2(n) reference curve, gray dashed line.
+   - Line 4: Quick Sort worst case O(n^2), i.e. n(n-1)/2, red dotted line.
+5. Add a title ("Time Complexity Growth: Merge Sort vs Quick Sort"), axis
+   labels, a legend and a light grid.
+6. Print a results table (n, comparisons, running time in ms) to the console.
+7. Save the chart as Visualization.png at 150 dpi.
+8. Add comments explaining each algorithm and the plotting logic.
+
+Expected Outcome
+----------------
+A line chart showing the growth rates of Merge Sort and Quick Sort. Both should
+follow the n log n curve closely, while the Quick Sort worst case grows much
+faster (quadratically).
