@@ -1,1 +1,1 @@
-"Create a flow diagram showing job selection based on deadlines and profits."
+Visualize the state space tree for N=4 queens, marking invalid branches in red.
